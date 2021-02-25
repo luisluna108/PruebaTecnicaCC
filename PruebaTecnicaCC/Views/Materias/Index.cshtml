@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DAL.Model.Materias>
+
+@{
+    ViewBag.Title = "Lista Materias";
+}
+<br />
+<h2>Lista Materias</h2>
+<br />
+<p>
+    <a href="@Url.Action("CreateMateria", "Materias")" class="btn btn-success"><i class="fas fa-book-medical"></i> Crear Materia </a>
+
+</p>
+<br />
+<table class="table table-bordered table-responsive table-striped" id="MateriaTable">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Fecha Inscripcion</th>
+            <th>Duración Curso</th>
+            <th>Final Curso</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+</table>
+

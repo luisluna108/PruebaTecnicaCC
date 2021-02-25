@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Lista Alumnos";
+}
+
+<style>
+    table.dataTable.no-footer {
+        border-bottom: 1px solid #ddd !important;
+    }
+</style>
+
+<br />
+<h2>Lista de Alumnos</h2>
+<br />
+<p>
+    <a href="@Url.Action("CreateAlumno", "Alumnos")" class="btn btn-success"><i class="fas fa-user-plus"></i> Crear Alumno </a>
+</p>
+<br />
+<table class="table table-responsive table-bordered table-striped" id="AlumnoTable">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Genero</th>
+            <th></th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+</table>
+
+<div class="modal fade" id="alumnoDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Detalles de Alumno</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Nombre</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="NombreAlumnoDetalle" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Apellido</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="ApellidoAlumnoDetalle" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Fecha Nacimiento</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="FechaNacimientoDetalle" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Genero</label>
+                        <div class="col-md-10">
+                            <div class="radio disabled">
+                                <label>
+                                    <input type="radio" name="Genero" id="GeneroMDetalle" value="true" disabled>
+                                    Masculino
+                                </label>
+                                <label>
+                                    <input type="radio" name="Genero" id="GeneroFDetalle" value="false" disabled>
+                                    Femenino
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Materia Inscrita</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="NombreMateriaDetalle" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-arrow-left"></i> Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
