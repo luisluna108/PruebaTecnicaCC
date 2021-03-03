@@ -1,6 +1,10 @@
 ﻿var AlumnoTable;
 
+$('.js-example-basic-single').select2();
+
 LoadGridAlumno();
+
+initSelect2("#IdMaterias", baseUrl + "Alumnos/MateriasList");
 
 $('#FechaNacimiento').datepicker({
     uiLibrary: 'bootstrap4',

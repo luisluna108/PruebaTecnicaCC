@@ -184,7 +184,7 @@
                     closeHtml: '<button type="button">&times;</button>',
                     newestOnTop: true,
                     preventDuplicates: false,
-                    progressBar: true
+                    progressBar: false
                 };
             }
 

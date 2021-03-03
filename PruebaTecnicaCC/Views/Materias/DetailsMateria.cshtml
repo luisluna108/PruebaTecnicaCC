@@ -52,7 +52,7 @@
 <hr />
 <h3>Alumnos cursando la materia de @Html.DisplayFor(model => model.Nombre)</h3>
 <br />
-<table class="table table-responsive table-bordered" id="AlumnoTable">
+<table class="table table-responsive table-bordered table-striped" id="AlumnoTable">
     <thead>
         <tr>
             <th></th>
@@ -66,6 +66,5 @@
     </thead>
 </table>
 <p>
-    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-danger" })
-    @Html.Hidden("IdMateria", Model.Id, new { @id = "IdMateria" })
+    <a href="@Url.Action("Index", "Materias")" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Regresar</a>
 </p>

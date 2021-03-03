@@ -58,18 +58,36 @@ namespace PruebaTecnicaCC.Controllers
         [HttpGet]
         public ActionResult CreateAlumno()
         {
-            List<SelectListItem> materiasList = context.Materias.AsNoTracking()
-                               .OrderBy(n => n.Nombre)
-                                   .Select(n =>
-                                   new SelectListItem
-                                   {
-                                       Value = n.Id.ToString(),
-                                       Text = n.Nombre
-                                   }).ToList();
-
-            ViewData["MateriaList"] = materiasList;
-
             return View();
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> MateriasList(Select2Request request)
+        {
+            var FilterId = 0;
+            IEnumerable<Materias> results = null;
+            request.search = request.search ?? string.Empty;
+            request.length = 10;
+
+            var query = context.Database.SqlQuery<Materias>("SP_Select_Materias @FilterN, @FilterId",
+                new SqlParameter("@FilterN", request.search),
+                new SqlParameter("@FilterId", FilterId)).ToList();
+
+            results = query;
+            request.recordsfiltered = results.Count();
+
+            results = results.Skip((request.page - 1) * request.length).Take(request.length);
+            results = results.ToList();
+
+            return Json(new
+            {
+                results = results.Select(e => new
+                {
+                    text = e.Nombre,
+                    id = e.Id
+                }),
+                count_filtered = request.recordsfiltered
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -109,7 +127,8 @@ namespace PruebaTecnicaCC.Controllers
                     genero = e.Genero,
                     nombreMateria = e.NombreMateria
                 }
-            )}, JsonRequestBehavior.AllowGet);
+            )
+            }, JsonRequestBehavior.AllowGet);
         }
 
     }

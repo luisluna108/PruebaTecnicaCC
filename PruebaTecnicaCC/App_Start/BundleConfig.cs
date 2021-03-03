@@ -48,6 +48,18 @@ namespace PruebaTecnicaCC
             bundles.Add(new StyleBundle("~/Content/moment-datepickerCss").Include(
                 "~/Content/moment-datepicker/datepicker.css"));
 
+            bundles.Add(new StyleBundle("~/Content/select2Css").Include(
+               "~/Content/css/select2.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/select2JS").Include(
+                "~/Scripts/select2.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/i18nJS").Include(
+               "~/Scripts/i18n/es.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/siteJS").Include(
+                "~/Scripts/scritps-site/site.js"));
+
         }
     }
 }
